@@ -1,0 +1,7 @@
+# work directories
+/.git
+/__pycache__
+/.vscode
+
+# bot token
+_config.py
