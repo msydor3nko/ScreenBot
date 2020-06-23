@@ -1,30 +1,38 @@
 import telebot
 from selenium import webdriver
+import re
 
-import screener
+from screener import DIR_PATH, run_screener
 import _config
+
+RE_URL = r'((https?):((//)|(\\\\))+([\w\d:#@%/;$()~_?\+-=\\\.&](#!)?)*)'
 
 
 # bot init
 bot = telebot.TeleBot(_config.TOKEN)
+print("Bot running ...")
 
 
-# Hi responce message
+# '/start' => hi message
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
-	bot.reply_to(message, "Welcome! Send me URL pleace.")
+	bot.reply_to(message, "Welcome! Please, send me your URL and I'll give you a screenshot.")
 
 
-# later will replace 'func=lambda msg: True' on URL regex filter - 'regexp="SOME_REGEXP" '
+# URL REGEXP => screenshot
+@bot.message_handler(regexp=RE_URL)
+def handle_message(message):
+	# getting screenshot at sending it back to user
+	run_screener(message.text)
+	with open(f"{DIR_PATH}/static/screenshot_.png", 'rb') as image_file:
+		bot.send_photo(message.chat.id, image_file, 'caption')
+
+
+# other messages => instructions
 @bot.message_handler(func=lambda msg: True)
-def echo_message(message):
-	bot.reply_to(message, screener.checkScreenshot())
+def handle_message(message):
+	bot.reply_to(message, 'Send me URL, please.')
 
 
-# @bot.message_handler(func=lambda msg: True)
-# def echo_all(message):
-# 	bot.reply_to(message, message.text)
-
-
-print("Bot running ...")
-bot.polling(none_stop=True)
+if __name__ == '__main__':
+    bot.polling(none_stop=True)
