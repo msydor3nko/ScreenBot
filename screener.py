@@ -3,8 +3,9 @@ import os
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 
+
 DIR_PATH = os.getcwd()
-WEB_DRIVER_PATH = os.getcwd() + '/chromedriver_83_0_4103_39_mac64'
+WEB_DRIVER_PATH = os.getcwd() + '/chromedriver' # ChromeDriver 83.0.4103.39 (mac64) using
 CONFIG_WIDTH = 1920
 
 

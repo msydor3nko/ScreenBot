@@ -5,6 +5,7 @@ import re
 from screener import DIR_PATH, run_screener
 import _config
 
+
 RE_URL = r'((https?):((//)|(\\\\))+([\w\d:#@%/;$()~_?\+-=\\\.&](#!)?)*)'
 
 
