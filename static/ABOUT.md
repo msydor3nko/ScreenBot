@@ -1,0 +1,1 @@
+In 'static' directory ScreenBot saving web pages screenshots.
