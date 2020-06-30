@@ -26,7 +26,7 @@ The simple Telegram Bot taking webpage screenshot with Python Selenium and Chrom
 
 * Create '_config.py' file into 'ScreenBot' directory and put there Telegram Bot token:
 
-`TOKEN = "<token-string>"`
+`TOKEN = "<token>"`
 
 * Following by the link bellow to Download Chrome Webdriver apropriate to your platform and Chrome Browser version:
 
