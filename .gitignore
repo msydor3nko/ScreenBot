@@ -2,6 +2,8 @@
 /.git
 /__pycache__
 /.vscode
+/.DS_Store
+/.venv
 
 # bot token
 _config.py
